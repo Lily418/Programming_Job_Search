@@ -1,0 +1,47 @@
+
+
+Growing tech company is seeking rockstar Scala engineers or Java engineers interested in learning Scala. No previous Scala experience necessary. We’re a Scala shop building microservices and lots of small apps. We’re on the leading edge of development paradigms, personalization, algorithms, service delivery, data at scale, continuous delivery and technical management.
+
+Signs of a good fit:
+
+    You have at least 3 years of experience working as a Scala or Java engineer
+    You value open-source technologies, solving challenging problems, and innovating
+    You love learning, and learn quickly
+    You work collaboratively with team members and achieve team goals
+    You build and maintain strong relationships with internal and external customers, and prioritize your work in alignment with the needs of these customers
+    You’re curious and like to experiment
+    You’re flexible and comfortable with change
+    You understand how to use body language and tone of voice to convey the right attitude
+    You know, or know how to discover, good technical solutions to apply to particular problems
+    You have startup experience
+
+What you will do in this role:
+
+    Code–a lot
+    Deploy to production–a lot
+    Architect and design good software, and influence your team to do so as well
+    Understand business needs and create software to manage them
+    Defend against scope creep
+    Mentor others
+    Demonstrate and communicate technical best practices
+    Be cool and effective in a crisis
+    Take ownership of services and application at scale
+
+Buzzword list of things that we expect you to know:
+
+    Programming generally — functional style, imperative style, object-orientation
+    SQL and relational databases (Postgres, MySQL, Oracle …)
+    NoSQL databases (MongoDB, Voldemort, Apache Cassandra …)
+    Linux/Unix (Red Hat, CentOS, Ubuntu, Mac OS …)
+    Source code management (Git, Gerrit…)
+    Continuous integration (Jenkins …)
+    Cloud technologies (EC2, Apache Cloudstack, Openstack …)
+    Standards (HTTP, JSON, JAX-*, XML …)
+    Open source projects and technologies (on Apache, GitHub …)
+    Continuous delivery
+
+Not the right fit but thinking of making a move? We have several other engineering positions available, so email us at jobs@skillfer.com and let us know what you’re looking for. We want to help you take the next step in your career!
+
+About Us: Skillfer is a boutique technical recruitment firm working with a select group of startups and tech companies in NYC. We're more technical, and more thorough than the average recruiter. We believe in engaging technologists with honesty, respect, and thoughtfulness to help them find jobs they will love.
+
+ONLY LOCAL CANDIDATES OR CANDIDATES READY TO MOVE TO NYC WILL BE CONSIDERED. WE CAN DO H1B TRANSFERS.

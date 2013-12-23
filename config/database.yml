@@ -49,7 +49,7 @@ test:
   database: job_search_test
   pool: 5
   username: job_search
-  password:
+  password: job_search
 
 production:
   adapter: postgresql

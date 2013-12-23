@@ -33,3 +33,7 @@ group :doc do
 end
 
 gem 'rails_12factor', group: :production
+
+group :test, :development do
+  gem "rspec-rails"
+end
