@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131222220553) do
+ActiveRecord::Schema.define(version: 20140110094229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20131222220553) do
   create_table "listings", force: true do |t|
     t.text   "text"
     t.string "id_source"
+    t.string "url"
   end
 
   add_index "listings", ["id_source"], name: "index_listings_on_id_source", unique: true, using: :btree

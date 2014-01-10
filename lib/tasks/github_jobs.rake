@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'json'
 
-
 def parse_listing(listing_id)
   Listing.find_by(id: listing_id)
 end
@@ -17,7 +16,7 @@ namespace :github_jobs do
         listings = JSON.parse(f.read)
         listings.each { |listing|
           begin
-            Listing.create(text: ActionView::Base.full_sanitizer.sanitize(listing['description']), id_source: "github" << listing['id'])
+            FoundJob.found_job("github" << listing['id'], listing['description'], listing['url'])
           rescue ActiveRecord::RecordNotUnique
             #We have already collected that listing
           end
@@ -45,7 +44,7 @@ namespace :github_jobs do
   	  	    puts tag['name']
   	  	}
   	  }
-  	  break if tags == [] || max_count < 100
+  	  break if tags == [] || max_count < 1000
   	  page += 1 
   	 end
   end
