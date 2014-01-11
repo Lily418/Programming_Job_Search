@@ -2,17 +2,24 @@ module FindJobs
   def self.find_matching_jobs(skills)
     
 
-    matching_listings = {}
+    listings_occurences = {}
 
     skills.each { |skill|
 
       skill.listings.each { |listing|
-        matching_listings[listing] ||= 0
-        matching_listings[listing] += 1
+        listings_occurences[listing] ||= 0
+        listings_occurences[listing] += 1
       } if !skill.nil?
     }
 
-    return matching_listings.keys.sort {|a,b| matching_listings[b]<=> matching_listings[a]}
+    listings = listings_occurences.keys.sort {|a,b| listings_occurences[b]<=> listings_occurences[a]}
+    
+    matching_jobs = []
+    listings.each { |listing| 
+      matching_jobs << {job: listing, skills: listing.skills.order(count: :desc).limit(10)}
+    }
+
+    return matching_jobs
 
   end
 end

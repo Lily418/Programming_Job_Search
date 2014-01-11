@@ -44,7 +44,7 @@ namespace :github_jobs do
   	  	    puts tag['name']
   	  	}
   	  }
-  	  break if tags == [] || max_count < 1000
+  	  break if tags == [] || max_count < 10000
   	  page += 1 
   	 end
   end

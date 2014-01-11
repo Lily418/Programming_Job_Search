@@ -7,7 +7,9 @@ class WelcomeController < ApplicationController
       skill_ids << Skill.find_by(id: id)
     }
 
-    matching_jobs = FindJobs.find_matching_jobs(skill_ids) if skill_ids != [] 
+    matching_jobs = FindJobs.find_matching_jobs(skill_ids) 
+
+    
 
   	respond_to do |format|
       format.json {render json: matching_jobs}
@@ -15,7 +17,7 @@ class WelcomeController < ApplicationController
   end
 
   def tagsearch
-    skills = Skill.where("skill LIKE ?", params['q'] + "%").order(count: :desc).limit(10)
+    skills = Skill.joins(:listings).distinct.where("skill LIKE ?", params['q'] + "%").order(count: :desc).limit(10)
     result = []
     skills.each { |skill|
       result << {id: skill.id, name:skill.skill}

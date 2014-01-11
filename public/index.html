@@ -5,6 +5,11 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
  <link rel="stylesheet" type="text/css" href="/css/token-input-facebook.css" />
+ <style type="text/css">
+  table{
+    margin-top:20px;
+  }
+ </style>
  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
  <script type="text/javascript" src="/js/jquery.tokeninput.js"></script>
 
@@ -19,10 +24,26 @@
     $.get('/welcome/index.json', { "skills[]": skillIds.split(',') }, function(data) {
       $('table').empty();
       for(var i = 0; i < data.length; i++){
-        $('<tr><td>'+ data[i]['title'] +'</td><td>'+data[i]['company']+'</td></tr>')
+
+        function clickFunction(url){
+          return function(){
+            window.open(url)
+          }
+        }
+
+        skills_required = "";
+        for(var j = 0; j < data[i]['skills'].length; j++)
+        {
+          skills_required += data[i]['skills'][j]['skill'] + ", "
+        }
+
+        skills_required = skills_required.slice(0,-2);
+
+
+        $('<tr><td>'+ data[i]['job']['title'] +'</td><td>'+data[i]['job']['company']+'</td><td>'+ skills_required +'</td></tr>')
           .mouseout(function(){$(this).removeClass('active')})
           .mouseover(function(){$(this).addClass('active')})
-          .click(function(){alert("poo")})
+          .click(clickFunction(data[i]['job']['url']))
           .appendTo('table')
       }
 
