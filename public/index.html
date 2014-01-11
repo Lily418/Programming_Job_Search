@@ -12,15 +12,23 @@
  <script type="text/javascript">
 
  function updatedList(){
-  skillIds = $("#skill-input").val()
-  paramsArray = 
-  $.get('/welcome/index.json', { "skills[]": skillIds }, function(data) {
-    $('table').empty
-    for(var i = 0; i < data.length; i++){
-      $('<tr><td>'+ data[i]['title'] +'</td><td>'+data[i]['company']+'</td></tr>').appendTo('table')
-    }
+  var skillIds = $("#skill-input").val();
+  $('table').empty();
+  if(skillIds != ""){
+    paramsArray = 
+    $.get('/welcome/index.json', { "skills[]": skillIds.split(',') }, function(data) {
+      $('table').empty();
+      for(var i = 0; i < data.length; i++){
+        $('<tr><td>'+ data[i]['title'] +'</td><td>'+data[i]['company']+'</td></tr>')
+          .mouseout(function(){$(this).removeClass('active')})
+          .mouseover(function(){$(this).addClass('active')})
+          .click(function(){alert("poo")})
+          .appendTo('table')
+      }
 
-  });
+    });
+  } 
+
 }
 
 $(document).ready(function () {

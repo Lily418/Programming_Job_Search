@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
       skill_ids << Skill.find_by(id: id)
     }
 
-    matching_jobs = FindJobs.find_matching_jobs(skill_ids)
+    matching_jobs = FindJobs.find_matching_jobs(skill_ids) if skill_ids != [] 
 
   	respond_to do |format|
       format.json {render json: matching_jobs}
