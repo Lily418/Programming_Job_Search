@@ -1,8 +1,8 @@
 require 'set'
 
 module FoundJob
-  def self.found_job(id, job_desc, url)
-  	listing = Listing.create(text: job_desc, id_source: id, url: url)
+  def self.found_job(id, job_desc, url, title, company)
+  	listing = Listing.create(text:job_desc, title: title, id_source: id, url: url, company: company)
   	skills = find_skills(job_desc)
     listing.skills = skills
   	

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+ <title>Programming Job Search</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+ <link rel="stylesheet" type="text/css" href="/css/token-input-facebook.css" />
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+ <script type="text/javascript" src="/js/jquery.tokeninput.js"></script>
+
+
+ <script type="text/javascript">
+
+ function updatedList(){
+  skillIds = $("#skill-input").val()
+  paramsArray = 
+  $.get('/welcome/index.json', { "skills[]": skillIds }, function(data) {
+    $('table').empty
+    for(var i = 0; i < data.length; i++){
+      $('<tr><td>'+ data[i]['title'] +'</td><td>'+data[i]['company']+'</td></tr>').appendTo('table')
+    }
+
+  });
+}
+
+$(document).ready(function () {
+  $("#skill-input").tokenInput("/welcome/tagsearch.json", {theme:"facebook", preventDuplicates: true, onAdd:updatedList, onDelete:updatedList});
+});
+</script>
+</head>
+<body>
+ <div id="wrap" class="container">
+   <header class="page-header">
+    <h1>Programming Job Search</h1>
+  </header>
+  <div class="container">
+   Enter Your Skills
+   <input type="text" name="search" id="skill-input">
+
+
+   <table class="table">
+  </table>
+</div>
+</div>
+</body>
+</html>

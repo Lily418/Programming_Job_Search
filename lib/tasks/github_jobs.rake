@@ -16,7 +16,7 @@ namespace :github_jobs do
         listings = JSON.parse(f.read)
         listings.each { |listing|
           begin
-            FoundJob.found_job("github" << listing['id'], listing['description'], listing['url'])
+            FoundJob.found_job("github" << listing['id'], listing['description'], listing['url'], listing['title'], listing['company'])
           rescue ActiveRecord::RecordNotUnique
             #We have already collected that listing
           end
