@@ -17,7 +17,12 @@ class WelcomeController < ApplicationController
   end
 
   def tagsearch
-    skills = Skill.joins(:listings).distinct.where("skill LIKE ?", params['q'] + "%").order(count: :desc).limit(10)
+    query = params['q'].strip.downcase
+    #skills = Skill.joins(:listings).distinct.where("skill LIKE ?", params['q'].strip.downcase + "%").order(count: :desc).limit(10)
+    skills = Skill.find_by_sql(["(SELECT id,skill,count, 0 AS x FROM skills WHERE skill=?) 
+                                UNION (SELECT DISTINCT ON (skills.id) skills.id,skill,count, 1 AS x FROM skills 
+                                INNER JOIN skill_listing_links ON skills.id=skill_listing_links.skill_id WHERE skill LIKE ? AND skill != ?) 
+                                ORDER BY x, count DESC LIMIT 10", query, query + "%", query])
     result = []
     skills.each { |skill|
       result << {id: skill.id, name:skill.skill}
