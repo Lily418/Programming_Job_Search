@@ -17,12 +17,11 @@
  <script type="text/javascript">
 
  function updatedList(){
-  alert("Troll");
   var skillIds = $("#skill-input").val();
   $('table').empty();
   if(skillIds != ""){
     paramsArray = 
-    $.get('/welcome/index.json', { "skills[]": skillIds.split(',') }, function(data) {
+    $.get('/jobsearch/findmatchingjob.json', { "skills[]": skillIds.split(',') }, function(data) {
       $('table').empty();
       for(var i = 0; i < data.length; i++){
 
@@ -54,7 +53,7 @@
 }
 
 $(document).ready(function () {
-  $("#skill-input").tokenInput("/welcome/tagsearch.json", {theme:"facebook", preventDuplicates: true, onAdd:updatedList, onDelete:updatedList, searchDelay:0});
+  $("#skill-input").tokenInput("/jobsearch/tagsearch.json", {theme:"facebook", preventDuplicates: true, onAdd:updatedList, onDelete:updatedList, searchDelay:0});
 });
 </script>
 </head>
