@@ -56,3 +56,5 @@ production:
   encoding: unicode
   database: job_search_production
   pool: 5
+  username: job_search
+  password: <%= ENV['DB_PASS'] %>
