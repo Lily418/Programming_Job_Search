@@ -3,8 +3,8 @@ class JobsearchController < ApplicationController
 
     skill_ids = []
 
-    params[:skills].each { |id|
-      skill_ids << Skill.find_by(id: id)
+    params[:skills].each { |name|
+      skill_ids << Skill.find_by(skill: name)
     }
 
     matching_jobs = FindJobs.find_matching_jobs(skill_ids) 

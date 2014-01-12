@@ -19,11 +19,17 @@
  <script type="text/javascript">
 
  function updatedList(){
-  var skillIds = $("#skill-input").val();
-  $('table').empty();
-  if(skillIds != ""){
-    paramsArray = 
-    $.get('/jobsearch/findmatchingjob.json', { "skills[]": skillIds.split(',') }, function(data) {
+  var skillParagraphTags = $(".token-input-list-facebook li p");
+
+  skills = []
+  for(var i = 0; i < skillParagraphTags.length; i++){
+    skills.push(skillParagraphTags[i].innerHTML);
+  }
+
+
+
+  if(skills.length != 0){
+    $.get('/jobsearch/findmatchingjob.json', { "skills[]": skills }, function(data) {
       $('table').empty();
       for(var i = 0; i < data.length; i++){
 
@@ -50,12 +56,14 @@
       }
 
     });
+  }else{
+      $('table').empty();
   } 
 
 }
 
 $(document).ready(function () {
-  $("#skill-input").tokenInput("/jobsearch/tagsearch.json", {theme:"facebook", preventDuplicates: true, onAdd:updatedList, onDelete:updatedList, searchDelay:0});
+  $("#skill-input").tokenInput("/jobsearch/tagsearch.json", {theme:"facebook", onAdd:updatedList, onDelete:updatedList, searchDelay:0, allowCustomEntry : true});
 });
 </script>
 </head>
