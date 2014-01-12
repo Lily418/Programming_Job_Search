@@ -288,10 +288,11 @@ $.TokenList = function (input, url_or_data, settings) {
                   
                 case KEY.COMMA:
                 case KEY.SPACE:
-                  if (settings.allowCustomEntry)  {
-                    return addCurrentTokenInputValue();
-                  } else if(selected_dropdown_item) {
+                  if(selected_dropdown_item) {
                     return addSelectedToken();
+                  }
+                  else {
+                  return addCurrentTokenInputValue();
                   }
                   break;
 
