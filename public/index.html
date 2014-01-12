@@ -11,6 +11,10 @@
     margin-top:10px;
     margin-bottom:20px;
   }
+
+  table tr{
+    cursor: pointer;
+  }
  </style>
  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
  <script type="text/javascript" src="/js/jquery.tokeninput.js"></script>
@@ -49,8 +53,8 @@
 
 
         $('<tr><td>'+ data[i]['job']['title'] +'</td><td>'+data[i]['job']['company']+'</td><td>'+ skills_required +'</td></tr>')
-          .mouseout(function(){$(this).removeClass('active')})
-          .mouseover(function(){$(this).addClass('active')})
+          .mouseout(function(){$(this).removeClass('success')})
+          .mouseover(function(){$(this).addClass('success')})
           .click(clickFunction(data[i]['job']['url']))
           .appendTo('table')
       }
@@ -73,7 +77,7 @@ $(document).ready(function () {
     <h1>Programming Job Search</h1>
   </header>
   <div class="container">
-   What languages do know?
+   What languages do you know?
    <input type="text" name="search" id="skill-input">
 
 
