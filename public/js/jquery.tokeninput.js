@@ -220,6 +220,8 @@ $.TokenList = function (input, url_or_data, settings) {
             var previous_token;
             var next_token;
 
+            inputBox = $("#" + settings.idPrefix + input.id);
+
             switch(event.keyCode) {
                 case KEY.LEFT:
                 case KEY.RIGHT:
@@ -288,6 +290,12 @@ $.TokenList = function (input, url_or_data, settings) {
                   
                 case KEY.COMMA:
                 case KEY.SPACE:
+                if(inputBox.val().match(/^\s+$/) || inputBox.val() == ""){
+                    inputBox.val("");
+                }
+                else{
+
+
                   if(selected_dropdown_item) {
                     return addSelectedToken();
                   }
@@ -295,6 +303,7 @@ $.TokenList = function (input, url_or_data, settings) {
                   return addCurrentTokenInputValue();
                   }
                   break;
+                }
 
                 case KEY.ESCAPE:
                   hide_dropdown();
